@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transcription Result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-black min-h-screen p-10 text-white">
+
+    <div class="max-w-4xl mx-auto">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold text-purple-400">Transcription Complete</h2>
+            <a href="/" class="text-sm text-gray-400 hover:text-white transition">← Upload another</a>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl">
+            <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Output Text</h3>
+            <p class="text-lg leading-relaxed text-gray-200">
+                {{ transcription.transcript_text }}
+            </p>
+        </div>
+
+        <div class="mt-6 flex gap-4">
+            <button onclick="navigator.clipboard.writeText('{{ transcription.transcript_text|escapejs }}')" class="px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition">
+                Copy to Clipboard
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
