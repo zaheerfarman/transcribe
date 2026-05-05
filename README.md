@@ -19,8 +19,8 @@ This is a modular transcription service that utilizes **FastAPI**, and the **Fas
 Clone the repo and set up your isolated environment:
 ```bash
 # Clone the repository
-git clone <your-repo-url>
-cd <your-repo-name>
+git clone https://github.com/zaheerfarman/transcribe.git
+cd transcribe
 
 # Setup Virtual Environment
 python -m venv env
@@ -28,3 +28,22 @@ source env/bin/activate  # Windows: env\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
+```
+
+
+### 2. Database & Storage
+Initialize the database and create local media storage:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+mkdir media
+```
+
+
+## 🚀 How It Works
+> **Normalization: Incoming audio is normalized to 16kHz Mono using pydub and FFmpeg to reduce the Word Error Rate (WER).
+
+> **Inference: The WhisperModel is loaded globally (stateless) into RAM using int8 compute type.
+
+> **Output: The pipeline returns structured text with timestamps and confidence scores.
